@@ -11,3 +11,6 @@ As can be seen in the picture below:
 **I Used the aprsing method Yahiha Mentioned on SLACK**
 
 ## Web Server Gateway Interface
+- You can take the same link 
+-  Type **/api/Home** at the end of the url path 
+- You will see some cool stuff i did For the Stretch Goal
