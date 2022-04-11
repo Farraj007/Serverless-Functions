@@ -1,9 +1,13 @@
-import requests
+from http.server import BaseHTTPRequestHandler
 
+class handler(BaseHTTPRequestHandler):
 
-
-def handler(event, context):
-
-    r = requests.get("https://www.youtube.com/")
-
-    return {"content": r.text}
+    def do_Get(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'text/plain')
+        self.end_headers()
+        self.send_response(200)
+        self.path = './TheNakedGun.jpg'
+        with open(self.path, 'rb') as f:
+        self.wfile.write(f.read())
+        return

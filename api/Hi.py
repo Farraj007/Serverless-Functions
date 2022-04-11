@@ -26,4 +26,28 @@ class handler(BaseHTTPRequestHandler):
       self.wfile.write(messageG.encode())
     self.wfile.write(b'\n 2022 Calendar: \n')
     self.wfile.write(calendar.calendar(2022, 2, 1, 6).encode())
+    if self.path.endswith('/Hi'):
+          self.send_response(200)
+          self.send_header('Content-type', 'text/html')
+          self.end_headers()
+
+          output = ''
+          output += '<html><body>'
+          output += '<h1>Welocme To my Serverless Page</h1>'
+          output += '<h3> <a href="/Hi/date"> Add Alarm </a> </h3>'
+          output += '</body></html>'
+    if self.path.endswith('/Hi/date'):
+            self.send_response(200)
+            self.send_header('Content-type', 'text/html')
+            self.end_headers()
+
+            output = ''
+            output += '<html><body>'
+            output += '<h1>Add a alarm </h1>'
+            output += '<input name="date" type="text" placeholder="Add Alarm">'
+            output += '<input type="submit" value="Submit">'
+            output += '</form>'
+            output += '</body></html>'
+
+            self.wfile.write(output.encode())      
     return
