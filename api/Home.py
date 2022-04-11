@@ -7,7 +7,7 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
         self.send_response(200)
-        self.path = './TheNakedGun.jpg'
+        self.path = ''
         with open(self.path, 'rb') as f:
-        self.wfile.write(f.read())
+            self.wfile.write(f.read())
         return
