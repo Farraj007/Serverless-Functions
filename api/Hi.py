@@ -11,7 +11,7 @@ class handler(BaseHTTPRequestHandler):
     self.end_headers()
     message='Today is ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     self.wfile.write(message.encode())
-    self.wfile.write(b'\n 2022 Calendar:')
+    self.wfile.write(b'\n 2022 Calendar: \n')
     self.wfile.write(calendar.calendar(2022, 2, 1, 6).encode())
     u=urlparse("https://serverless-functions-fhcu5fh5j-farraj007.vercel.app/api/Hi")
     u.path()
