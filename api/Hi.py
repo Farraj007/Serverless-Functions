@@ -1,11 +1,21 @@
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
-from urllib.parse import urlparse
+from urllib import parse
 import calendar
 
 class handler(BaseHTTPRequestHandler):
 
   def do_GET(self):
+    s= self.path
+    url_components = parse.urlparse(s)
+    query_string = parse.parse_qsl(url_components.query)
+    dic=dict(query_string)
+    name= dic.get('name')
+    if name:
+      message = 'Hello, {}!'.format(name)
+    else:
+      message = 'Hello, Stranger!' 
+    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now()}"   
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
@@ -13,7 +23,6 @@ class handler(BaseHTTPRequestHandler):
     self.wfile.write(message.encode())
     self.wfile.write(b'\n 2022 Calendar: \n')
     self.wfile.write(calendar.calendar(2022, 2, 1, 6).encode())
-    u=urlparse("https://serverless-functions-fhcu5fh5j-farraj007.vercel.app/api/Hi")
-    u.path()
-    self.wfile.write(u.path().encode())
+    
+    
     return
