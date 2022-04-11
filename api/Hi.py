@@ -10,12 +10,12 @@ class handler(BaseHTTPRequestHandler):
     url_components = parse.urlparse(s)
     query_string = parse.parse_qsl(url_components.query)
     dic=dict(query_string)
-    name= dic.get('name')
+    name= dic.get('prj_oUkhTnc76tOj9t5t68smS498XX4T')
     if name:
       message = f'Hello, {name}!'
     else:
       message = 'Hello, Stranger!' 
-    message += f"\n Greetings from {self.server.server_address[1]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    message += f"\n Greetings from {self.server.server_address[1]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} \n"
        
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
