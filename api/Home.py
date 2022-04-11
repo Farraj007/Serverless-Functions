@@ -17,4 +17,4 @@ app = Flask(__name__)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def catch_all(path):
-    return Response("<h1>Barham Farraj</h1><p>You visited: /%s</p>" % (path), mimetype="text/html")
+    return Response("<h1>Barham Farraj</h1><p>You visited: /%s</p> <br>" % (path), mimetype="text/html" ),Response("<br><button> <a href='/Hi'>Calendar</a> </button>", mimetype="text/html" )
