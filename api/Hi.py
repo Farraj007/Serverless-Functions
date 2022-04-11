@@ -3,8 +3,6 @@ from datetime import datetime
 from urllib import parse
 import calendar
 
-from black import out
-
 class handler(BaseHTTPRequestHandler):
 
   def do_GET(self):
