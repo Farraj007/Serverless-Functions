@@ -12,10 +12,10 @@ class handler(BaseHTTPRequestHandler):
     dic=dict(query_string)
     name= dic.get('name')
     if name:
-      message = 'Hello, {}!'.format(name)
+      message = f'Hello, {name}!'
     else:
       message = 'Hello, Stranger!' 
-    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now()}"
+    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
        
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
