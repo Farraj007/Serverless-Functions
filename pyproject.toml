@@ -8,6 +8,7 @@ authors = ["Barham Farraj <barhamfarraj@icloud.com>"]
 python = "^3.9"
 requests = "^2.27.1"
 sudo = "^1.0.0"
+Flask = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
