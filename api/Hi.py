@@ -35,8 +35,7 @@ class handler(BaseHTTPRequestHandler):
           output += '<h3> <a href="/Hi/date"> Add Alarm </a> </h3>'
           output += '</body></html>'
           self.wfile.write(output.encode())      
-
-          return output
+          
     if self.path.endswith('/Hi/date'):
             output = ''
             output += '<html><body>'
