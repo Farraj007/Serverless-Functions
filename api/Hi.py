@@ -15,7 +15,7 @@ class handler(BaseHTTPRequestHandler):
       message = f'Hello, {name}!'
     else:
       message = 'Hello, Stranger!' 
-    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+    message += f"\n Greetings from {self.server.server_address[1]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
        
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
