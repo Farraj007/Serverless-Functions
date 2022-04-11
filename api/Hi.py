@@ -2,6 +2,13 @@ from http.server import BaseHTTPRequestHandler
 from datetime import datetime
 from urllib import parse
 import calendar
+from flask import Flask, Response
+app = Flask(__name__)
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+  return Response("<br><button> <a href='/api/Home'>Home</a> </button>", mimetype="text/html" )
 
 class handler(BaseHTTPRequestHandler):
 
@@ -10,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
     url_components = parse.urlparse(s)
     query_string = parse.parse_qsl(url_components.query)
     dic=dict(query_string)
-    name= dic.get('path')
+    name= dic.get('name')
     if name:
       message = f'Hello, {name}!'
     else:
