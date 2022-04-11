@@ -15,12 +15,14 @@ class handler(BaseHTTPRequestHandler):
       message = 'Hello, {}!'.format(name)
     else:
       message = 'Hello, Stranger!' 
-    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now()}"   
+    message += f"\n Greetings from {self.server.server_address[0]} at {datetime.now()}"
+       
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    message='Today is ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     self.wfile.write(message.encode())
+    messageG='Today is ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
+    self.wfile.write(messageG.encode())
     self.wfile.write(b'\n 2022 Calendar: \n')
     self.wfile.write(calendar.calendar(2022, 2, 1, 6).encode())
     
