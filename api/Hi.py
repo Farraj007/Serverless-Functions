@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 from datetime import datetime
 from urllib import parse
+import platform
 import calendar
 
 class handler(BaseHTTPRequestHandler):
@@ -10,12 +11,12 @@ class handler(BaseHTTPRequestHandler):
     url_components = parse.urlparse(s)
     query_string = parse.parse_qsl(url_components.query)
     dic=dict(query_string)
-    name= dic.get('prj_oUkhTnc76tOj9t5t68smS498XX4T')
+    name= dic.get('path')
     if name:
       message = f'Hello, {name}!'
     else:
       message = 'Hello, Stranger!' 
-    message += f"\n Greetings from {self.server.server_address[1]} at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} \n"
+    message += f"\n Greetings from {platform.python_version()}  \n"
        
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
@@ -23,7 +24,7 @@ class handler(BaseHTTPRequestHandler):
     self.wfile.write(message.encode())
     messageG='Today is ' + str(datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
     self.wfile.write(messageG.encode())
-    self.wfile.write(b'\n 2022 Calendar: \n')
+    self.wfile.write(b'\n2022 Calendar: \n')
     self.wfile.write(calendar.calendar(2022, 2, 1, 7).encode())
     
     
